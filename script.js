@@ -6,11 +6,14 @@ hamburger.addEventListener('click', () => {
     navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
 });
 
-// Close menu when link is clicked
+// Close menu when link is clicked (only on mobile)
 const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        navMenu.style.display = 'none';
+        // Only close menu if screen is small (mobile)
+        if (window.innerWidth <= 768) {
+            navMenu.style.display = 'none';
+        }
     });
 });
 
@@ -20,7 +23,9 @@ navLinks.forEach(link => {
         e.preventDefault();
         const targetId = link.getAttribute('href');
         const targetSection = document.querySelector(targetId);
-        targetSection.scrollIntoView({ behavior: 'smooth' });
+        if (targetSection) {
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
     });
 });
 
@@ -44,23 +49,16 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Contact form submission
+// Contact form - show success message
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = new FormData(contactForm);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const subject = formData.get('subject');
-        
-        // Send email using mailto
-        window.location.href = `mailto:almamud.tech@gmail.com?subject=${encodeURIComponent(subject)}&body=Name: ${encodeURIComponent(name)}%0DEmail: ${encodeURIComponent(email)}%0D%0DMessage:%0D`;
-        
-        // Reset form
-        contactForm.reset();
+    contactForm.addEventListener('submit', function(e) {
+        // Let Netlify handle the form submission
+        // Just show a success message
+        setTimeout(() => {
+            alert('Thank you! Your message has been sent successfully. I will get back to you soon!');
+            this.reset();
+        }, 500);
     });
 }
 
