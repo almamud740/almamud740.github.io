@@ -1,18 +1,23 @@
 // Mobile Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
 
-hamburger.addEventListener('click', () => {
-    navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
-});
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        navMenu.style.display = navMenu.classList.contains('active') ? 'flex' : 'none';
+    });
+}
 
 // Close menu when link is clicked (only on mobile)
-const navLinks = document.querySelectorAll('.nav-link');
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
-        // Only close menu if screen is small (mobile)
         if (window.innerWidth <= 768) {
-            navMenu.style.display = 'none';
+            if (navMenu) {
+                navMenu.classList.remove('active');
+                navMenu.style.display = 'none';
+            }
         }
     });
 });
@@ -49,15 +54,22 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Contact form - show success message
+// Contact form submission
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        // Let Netlify handle the form submission
-        // Just show a success message
+        // Formspree will handle the submission automatically
+        // Just show success message after a delay
+        const formElement = this;
+        const successMessage = document.getElementById('successMessage');
+        
+        // Listen for successful submission
         setTimeout(() => {
-            alert('Thank you! Your message has been sent successfully. I will get back to you soon!');
-            this.reset();
+            // Formspree redirects on success, but we'll show message first
+            if (successMessage) {
+                successMessage.style.display = 'block';
+                formElement.reset();
+            }
         }, 500);
     });
 }
