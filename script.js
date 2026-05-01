@@ -54,23 +54,48 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Contact form submission
+// Contact form submission with Fetch API
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        // Formspree will handle the submission automatically
-        // Just show success message after a delay
-        const formElement = this;
+        e.preventDefault(); // Prevent default form submission
+        
+        const formData = new FormData(this);
         const successMessage = document.getElementById('successMessage');
         
-        // Listen for successful submission
-        setTimeout(() => {
-            // Formspree redirects on success, but we'll show message first
-            if (successMessage) {
-                successMessage.style.display = 'block';
-                formElement.reset();
+        // Send form data using Fetch API (avoids CORS issues)
+        fetch('https://formspree.io/f/mqenkjyj', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
             }
-        }, 500);
+        })
+        .then(response => {
+            if (response.ok) {
+                // Show success message
+                contactForm.style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // Scroll to success message
+                successMessage.scrollIntoView({ behavior: 'smooth' });
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Optional: Show form again after 5 seconds
+                setTimeout(() => {
+                    contactForm.style.display = 'block';
+                    successMessage.style.display = 'none';
+                }, 5000);
+            } else {
+                alert('There was an error sending your message. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('There was an error sending your message. Please try again.');
+        });
     });
 }
 
