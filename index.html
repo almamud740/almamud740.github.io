@@ -419,23 +419,22 @@
 
                 <div class="contact-form">
                     <h3>Send me a message</h3>
-                    <form id="contactForm" name="contact" method="POST" netlify>
-                        <div class="form-group">
-                            <input type="text" name="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" name="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
+                            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                                    <div class="form-group">
+                                        <input type="text" name="name" placeholder="Your Name" required>
+                                    </div>
+                                    <div class="form-group">
+                                     <input type="email" name="email" placeholder="Your Email" required>
+                                    </div>
+                                <div class="form-group">
                             <input type="text" name="subject" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
-            </div>
+                                </div>
+                                <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+</div>
 
             <div class="social-section">
                 <h3>Follow Me On</h3>
