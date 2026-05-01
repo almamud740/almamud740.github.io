@@ -37,7 +37,9 @@
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-image">
-                <img src="assets/img/profile.jpg" alt="Md. Al Mamud" class="profile-pic">
+                <div class="profile-pic-placeholder">
+                    <i class="fas fa-user"></i>
+                </div>
             </div>
             <div class="hero-text">
                 <h1>MD. AL MAMUD</h1>
@@ -181,8 +183,10 @@
             <div class="projects-grid">
                 <!-- Project 1: Thesis -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/img/thesis.jpg" alt="Bangla Fake News Detection">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
                         <span class="project-status">In Progress (50%)</span>
                     </div>
                     <div class="project-content">
@@ -215,8 +219,10 @@
 
                 <!-- Project 2: FlexFlow -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/img/flexflow.jpg" alt="FlexFlow Platform">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
                         <span class="project-status">50% Complete</span>
                     </div>
                     <div class="project-content">
@@ -249,8 +255,10 @@
 
                 <!-- Project 3: Data Communication -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/img/data-comm.jpg" alt="Data Communication">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
                         <span class="project-status">Completed</span>
                     </div>
                     <div class="project-content">
@@ -280,8 +288,10 @@
 
                 <!-- Project 4: Process Scheduler -->
                 <div class="project-card">
-                    <div class="project-image">
-                        <img src="assets/img/scheduler.jpg" alt="Process Scheduler">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-tasks"></i>
+                        </div>
                         <span class="project-status">Completed</span>
                     </div>
                     <div class="project-content">
@@ -419,22 +429,26 @@
 
                 <div class="contact-form">
                     <h3>Send me a message</h3>
-                            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                                    <div class="form-group">
-                                        <input type="text" name="name" placeholder="Your Name" required>
-                                    </div>
-                                    <div class="form-group">
-                                     <input type="email" name="email" placeholder="Your Email" required>
-                                    </div>
-                                <div class="form-group">
+                    <form id="contactForm" action="https://formspree.io/f/mqenkjyj" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
                             <input type="text" name="subject" placeholder="Subject" required>
-                                </div>
-                                <div class="form-group">
-                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                    <div id="successMessage" style="display:none; margin-top:1rem; padding:1rem; background:#d4edda; color:#155724; border-radius:5px; text-align:center; font-weight:600;">
+                        ✓ Thank you! Your message has been sent successfully. I'll get back to you soon!
                     </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-</div>
+                </div>
+            </div>
 
             <div class="social-section">
                 <h3>Follow Me On</h3>
@@ -448,8 +462,8 @@
                     <a href="mailto:almamud.tech@gmail.com" class="social-icon" title="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
-                    <a href="https://twitter.com" target="_blank" class="social-icon" title="Twitter">
-                        <i class="fab fa-twitter"></i>
+                    <a href="tel:+8801755575606" class="social-icon" title="Phone">
+                        <i class="fas fa-phone"></i>
                     </a>
                 </div>
             </div>
